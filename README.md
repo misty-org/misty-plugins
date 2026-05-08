@@ -13,7 +13,7 @@ Misty is closed source. This repository hosts the public plugin-facing headers p
 | `include/misty_plugin_api.h` | Raw C ABI between Misty and plugins |
 | `include/misty_plugin.h` | C++ convenience wrapper for plugin authors |
 | `plugins/preview_manager/` | Sample file preview plugin |
-| `plugins/panel_preview/` | Native panel/modal preview plugin |
+| `plugins/preview_panel/` | Native panel/modal preview plugin |
 | `vendor/` | Vendored headers used by plugin examples |
 
 ## Build Ownership
@@ -40,8 +40,8 @@ The Misty host app consumes this workspace by pointing `MISTY_EXTERNAL_PLUGIN_DI
 Typical local loop from the Misty host repo:
 
 ```bash
-cmake --build client/build/debug --target panel_preview panel_preview_manifest misty_plugin_sandbox
-client/build/debug/bin/misty-plugin-sandbox --plugin-dir client/build/debug/bin/plugins/panel_preview
+cmake --build client/build/debug --target preview_panel preview_panel_manifest misty_plugin_sandbox
+client/build/debug/bin/misty-plugin-sandbox --plugin-dir client/build/debug/bin/plugins/preview_panel
 ```
 
-`panel_preview` selects host-native scenes, and the sandbox renders the real Misty modal/panel primitives so you can iterate without triggering real app state.
+`preview_panel` selects host-native scenes, and the sandbox renders the real Misty modal/panel primitives so you can iterate without triggering real app state.

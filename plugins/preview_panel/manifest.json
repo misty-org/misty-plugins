@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "id": "panel-preview",
-  "name": "Panel Preview",
+  "id": "preview-panel",
+  "name": "Preview Panel",
   "version": "@PROJECT_VERSION@",
   "description": "Development preview scenes for Misty panel and modal work.",
   "author": "Misty",

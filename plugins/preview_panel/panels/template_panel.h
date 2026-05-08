@@ -1,0 +1,18 @@
+#pragma once
+
+#include "preview_panel.h"
+
+namespace misty::preview_panel {
+
+class TemplatePanel final : public PreviewPanel {
+public:
+    static constexpr const char* kSceneId = "preview-panel.template-panel";
+
+    const char* panel_id() const override { return kSceneId; }
+    const char* title() const override { return "Template Panel"; }
+    void render(PluginUI& ui, Host& host) const override;
+};
+
+const PreviewPanel& template_panel();
+
+} // namespace misty::preview_panel

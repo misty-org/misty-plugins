@@ -49,4 +49,6 @@ dist/
 *.so
 *.dylib
 *.dll
+
+**/.cache
 >>>>>>> a2c23d2 (init)
