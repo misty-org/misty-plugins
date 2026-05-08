@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "panel-preview",
+  "name": "Panel Preview",
+  "version": "@PROJECT_VERSION@",
+  "description": "Development preview scenes for Misty panel and modal work.",
+  "author": "Misty",
+  "enabled": true,
+  "platforms": ["@MISTY_HOST_OS@"],
+  "plugin": {
+    "abi_version": 4,
+    "variants": [
+      {
+        "os": "@MISTY_HOST_OS@",
+        "arch": "@MISTY_HOST_ARCH@",
+        "runtime": "",
+        "library": "@MISTY_PANEL_PREVIEW_VARIANT_LIBRARY@"
+      }
+    ]
+  }
+}

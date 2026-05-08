@@ -1,6 +1,6 @@
 #define MISTY_PLUGIN_BUILD 1
 
-#include "core/extensions/misty_plugin_sdk.h"
+#include "misty_plugin.h"
 
 #include <algorithm>
 #include <cctype>
@@ -293,7 +293,7 @@ void reset_preview_zoom(const MistyInvokeContext* ctx, void*) {
 
 void render_preview(const MistyRenderContext* ctx, void*) {
     misty::Host host(ctx);
-    misty::UI ui(ctx);
+    misty::PluginUI ui(ctx);
 
     char selected[kMaxSelectedPath];
     if (host.copy_selected_file_path(selected, sizeof(selected)) &&
