@@ -58,5 +58,5 @@
       "macos-aarch64"
     ]
   },
-  "logo_path": "../plugins/ytdlp/assets/logo.svg"
+  "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/ytdlp/assets/logo.svg"
 }

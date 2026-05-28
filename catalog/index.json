@@ -69,7 +69,7 @@
           }
         ]
       },
-      "logo_path": "../plugins/git/assets/logo.svg"
+      "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/git/assets/logo.svg"
     },
     {
       "id": "quick_convert",
@@ -131,7 +131,7 @@
           }
         ]
       },
-      "logo_path": "../plugins/quick_convert/assets/logo.svg"
+      "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/quick_convert/assets/logo.svg"
     },
     {
       "id": "themes",
@@ -193,7 +193,7 @@
           }
         ]
       },
-      "logo_path": "../plugins/themes/assets/logo.svg"
+      "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/themes/assets/logo.svg"
     },
     {
       "id": "vault",
@@ -319,7 +319,7 @@
           }
         ]
       },
-      "logo_path": "../plugins/ytdlp/assets/logo.svg"
+      "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/ytdlp/assets/logo.svg"
     }
   ]
 }
