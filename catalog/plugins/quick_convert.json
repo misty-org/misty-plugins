@@ -54,5 +54,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "../plugins/quick_convert/assets/logo.svg"
 }

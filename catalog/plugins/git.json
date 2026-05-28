@@ -66,5 +66,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "../plugins/git/assets/logo.svg"
 }

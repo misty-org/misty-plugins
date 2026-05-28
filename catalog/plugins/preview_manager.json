@@ -35,5 +35,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "../plugins/preview_manager/assets/logo.svg"
 }

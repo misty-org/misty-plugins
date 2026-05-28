@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Video download icon for the yt-dlp plugin">
+  <defs>
+    <style>
+      .red{fill:#E11D48;}
+      .red-dark{fill:#9F1239;}
+      .white{fill:#FFFFFF;}
+      .ink{fill:#111827;}
+      .green{fill:#22C55E;}
+    </style>
+  </defs>
+  <rect class="ink" x="84" y="130" width="632" height="540" rx="88"/>
+  <rect class="red" x="112" y="158" width="576" height="404" rx="66"/>
+  <polygon class="white" points="337,267 337,453 501,360"/>
+  <rect class="white" x="182" y="604" width="240" height="38" rx="19"/>
+  <rect class="white" x="464" y="604" width="154" height="38" rx="19" opacity="0.85"/>
+  <circle class="green" cx="612" cy="578" r="96"/>
+  <path class="white" d="M612 523c11 0 20 9 20 20v44.7l16.1-16.1c7.8-7.8 20.5-7.8 28.3 0 7.8 7.8 7.8 20.5 0 28.3l-50.2 50.2c-7.8 7.8-20.5 7.8-28.3 0L548 599.9c-7.8-7.8-7.8-20.5 0-28.3 7.8-7.8 20.5-7.8 28.3 0l15.7 15.7V543c0-11 9-20 20-20Z"/>
+  <path class="red-dark" d="M688 250.7v245.3c0 36.5-29.5 66-66 66H330.5l135.7-77c18.2-10.3 29.4-29.5 29.4-50.5s-11.2-40.2-29.4-50.5L222.5 246h399.5c36.5 0 66 29.5 66 66Z" opacity="0.16"/>
+</svg>

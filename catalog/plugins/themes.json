@@ -53,5 +53,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "../plugins/themes/assets/logo.svg"
 }

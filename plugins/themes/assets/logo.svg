@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Palette icon for the Themes plugin">
+  <defs>
+    <style>
+      .bg{fill:#12131A;}
+      .outline{fill:#F5F5F4;}
+      .gold{fill:#D79921;}
+      .green{fill:#98971A;}
+      .blue{fill:#458588;}
+      .red{fill:#CC241D;}
+      .purple{fill:#B16286;}
+    </style>
+  </defs>
+  <circle class="outline" cx="400" cy="400" r="348"/>
+  <path class="bg" d="M400 112c-159.1 0-288 117.9-288 263.3C112 505.7 233.6 616 373.6 616h50.9c43.6 0 78.9-35.3 78.9-78.9 0-21.1-8.4-41.4-23.3-56.3l-1.9-1.9c-10.7-10.7-16.7-25.2-16.7-40.3 0-31.5 25.5-57.1 57.1-57.1h67c56 0 102.4-44.7 102.4-100.7C688 186.7 563.8 112 400 112Z"/>
+  <circle class="gold" cx="246" cy="311" r="54"/>
+  <circle class="green" cx="333" cy="223" r="48"/>
+  <circle class="blue" cx="459" cy="205" r="50"/>
+  <circle class="red" cx="565" cy="284" r="52"/>
+  <circle class="purple" cx="259" cy="445" r="56"/>
+  <circle class="outline" cx="539" cy="445" r="64"/>
+  <circle class="bg" cx="539" cy="445" r="36"/>
+</svg>

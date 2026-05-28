@@ -57,5 +57,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "../plugins/ytdlp/assets/logo.svg"
 }

@@ -68,7 +68,8 @@
             "url": "https://github.com/misty-org/misty-hub/releases/download/plugins/git-macos-aarch64.zip"
           }
         ]
-      }
+      },
+      "logo_path": "../plugins/git/assets/logo.svg"
     },
     {
       "id": "quick_convert",
@@ -129,7 +130,8 @@
             "url": "https://github.com/misty-org/misty-hub/releases/download/plugins/quick-convert-macos-aarch64.zip"
           }
         ]
-      }
+      },
+      "logo_path": "../plugins/quick_convert/assets/logo.svg"
     },
     {
       "id": "themes",
@@ -190,7 +192,8 @@
             "url": "https://github.com/misty-org/misty-hub/releases/download/plugins/themes-macos-aarch64.zip"
           }
         ]
-      }
+      },
+      "logo_path": "../plugins/themes/assets/logo.svg"
     },
     {
       "id": "vault",
@@ -315,7 +318,8 @@
             "url": "https://github.com/misty-org/misty-hub/releases/download/plugins/ytdlp-macos-aarch64.zip"
           }
         ]
-      }
+      },
+      "logo_path": "../plugins/ytdlp/assets/logo.svg"
     }
   ]
 }
