@@ -1,6 +1,12 @@
 {
   "published": false,
-  "plugin_dir": "preview_panel",
+  "manifest": {
+    "id": "preview-panel",
+    "name": "Preview Panel",
+    "version": "0.1.0",
+    "description": "Development preview scenes for Misty panel and modal work.",
+    "author": "Misty"
+  },
   "version": "0.1.0",
   "overview": "Development preview scenes for Misty panel and modal work.",
   "status": "internal",
@@ -36,5 +42,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+  "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/preview_panel/assets/logo.svg"
 }
