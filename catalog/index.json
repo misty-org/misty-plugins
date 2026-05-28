@@ -25,7 +25,8 @@
     "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/ytdlp.json"
   },
   {
-      "id": "preview_panel",
-      "name": "Preview Panel",
-      "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/preview_panel.json"
+    "id": "preview-panel",
+    "name": "Preview Panel",
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/preview-panel.json"
+  }
 ]
