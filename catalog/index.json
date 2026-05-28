@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-28T19:43:48.526Z",
+  "page_size": 3,
+  "total_plugins": 5,
+  "total_pages": 2,
+  "plugins": [
+    {
+      "id": "git",
+      "name": "Git",
+      "version": "1.2.0",
+      "author": "mistysys",
+      "overview": "Seamlessly integrate Git version control into Misty so users can inspect repository state, review changes, and work with commits without leaving the workspace.",
+      "status": "available",
+      "verified": true,
+      "page": 1
+    },
+    {
+      "id": "quick_convert",
+      "name": "Quick Convert",
+      "version": "0.1.0",
+      "author": "Misty",
+      "overview": "Quick Convert helps users convert images, audio, and video into common formats without leaving Misty.",
+      "status": "available",
+      "verified": true,
+      "page": 1
+    },
+    {
+      "id": "themes",
+      "name": "Themes",
+      "version": "0.1.0",
+      "author": "Misty",
+      "overview": "Themes is Misty's built-in theme builder for presets and token editing.",
+      "status": "available",
+      "verified": true,
+      "page": 1
+    },
+    {
+      "id": "vault",
+      "name": "Vault",
+      "version": "0.1.0",
+      "author": "Misty",
+      "overview": "Vault provides encrypted, deduplicated backups powered by restic.",
+      "status": "available",
+      "verified": true,
+      "page": 2
+    },
+    {
+      "id": "ytdlp",
+      "name": "yt-dlp",
+      "version": "0.1.0",
+      "author": "Misty",
+      "overview": "yt-dlp brings YouTube downloading into Misty without leaving the app.",
+      "status": "available",
+      "verified": true,
+      "page": 2
+    }
+  ]
+}

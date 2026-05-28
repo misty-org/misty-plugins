@@ -1,0 +1,56 @@
+{
+  "published": true,
+  "version": "0.1.0",
+  "overview": "Vault provides encrypted, deduplicated backups powered by restic.",
+  "status": "available",
+  "capabilities": [
+    "Host backup controls in the native launcher",
+    "Keep restic-specific setup outside Misty core",
+    "Prepare a future surface for scheduling and restore"
+  ],
+  "where_it_appears": [
+    "Dock",
+    "Plugin launcher"
+  ],
+  "permissions": [
+    "Future restic repository access",
+    "Future filesystem read access for selected backup roots",
+    "Future shell access to run restic"
+  ],
+  "getting_started": [
+    "Install Vault.",
+    "Open Plugins in Misty.",
+    "Launch Vault to configure backups once available."
+  ],
+  "changelog": [
+    "v0.1.0 - Moved Vault out of core and into a plugin placeholder."
+  ],
+  "links": [
+    {
+      "label": "Documentation",
+      "url": "https://mistysys.com/docs"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Install",
+      "kind": "primary"
+    }
+  ],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Dock"
+    ],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "private",
+    "artifact_base_name": "vault",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

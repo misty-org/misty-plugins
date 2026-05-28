@@ -30,6 +30,9 @@ if(NOT DEFINED MISTY_HOST_ARCH)
         set(MISTY_HOST_ARCH "x86_64")
     endif()
 endif()
+if(NOT DEFINED MISTY_PRIVATE_PLUGIN_DIR)
+    set(MISTY_PRIVATE_PLUGIN_DIR "$ENV{HOME}/.misty/plugins/private" CACHE PATH "Path to the user private plugin directory")
+endif()
 
 function(misty_plugins_apply_host_defs target)
     if(COMMAND misty_configure_plugin_host)
@@ -71,14 +74,24 @@ target_include_directories(preview_manager PRIVATE
 )
 target_compile_definitions(preview_manager PRIVATE MISTY_PLUGIN_BUILD=1)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/manifest.json.in")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/manifest.json")
     set(MISTY_PREVIEW_MANAGER_MANIFEST_OUT "${CMAKE_CURRENT_BINARY_DIR}/preview_manager-manifest.json")
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/manifest.json.in" "${MISTY_PREVIEW_MANAGER_MANIFEST_OUT}" @ONLY)
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/manifest.json" "${MISTY_PREVIEW_MANAGER_MANIFEST_OUT}" @ONLY)
     add_custom_target(preview_manager_manifest ALL
         COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_PLUGIN_OUTPUT_DIR}"
         COMMAND ${CMAKE_COMMAND} -E copy
             "${MISTY_PREVIEW_MANAGER_MANIFEST_OUT}"
             "${MISTY_PLUGIN_OUTPUT_DIR}/manifest.json"
+        DEPENDS preview_manager
+    )
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/plugin.json")
+    add_custom_target(preview_manager_details ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_PLUGIN_OUTPUT_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy
+            "${CMAKE_CURRENT_SOURCE_DIR}/plugins/preview_manager/plugin.json"
+            "${MISTY_PLUGIN_OUTPUT_DIR}/plugin.json"
         DEPENDS preview_manager
     )
 endif()
@@ -128,13 +141,14 @@ set(MISTY_PLUGIN_SANDBOX_SOURCES
     "${MISTY_HOST_SRC_DIR}/core/manager/env_manager.cpp"
     "${MISTY_HOST_SRC_DIR}/core/manager/font_manager.cpp"
     "${MISTY_HOST_SRC_DIR}/core/manager/settings_manager.cpp"
+    "${MISTY_HOST_SRC_DIR}/core/manager/theme_manager.cpp"
     "${MISTY_HOST_SRC_DIR}/core/system/util.cpp"
     "${MISTY_HOST_SRC_DIR}/core/ui/stb_image_impl.cpp"
     "${MISTY_HOST_SRC_DIR}/core/ui/svg_loader.cpp"
     "${MISTY_HOST_SRC_DIR}/core/ui/ui_animate.cpp"
     "${MISTY_HOST_SRC_DIR}/core/ui/ui_layout.cpp"
     "${MISTY_HOST_SRC_DIR}/panels/activity/activity_state.cpp"
-    "${MISTY_HOST_SRC_DIR}/panels/panel.cpp"
+    "${MISTY_HOST_SRC_DIR}/panels/panel/panel.cpp"
     "${MISTY_HOST_SRC_DIR}/views/app_view.cpp"
     "${MISTY_HOST_VENDOR_DIR}/glad/src/glad.cpp"
     "${MISTY_HOST_VENDOR_DIR}/imgui/imgui.cpp"
@@ -179,4 +193,168 @@ elseif(WIN32)
 endif()
 if(TARGET misty_assets)
     add_dependencies(misty_plugin_sandbox misty_assets)
+endif()
+
+set(MISTY_QUICK_CONVERT_OUTPUT_DIR "${MISTY_PRIVATE_PLUGIN_DIR}/quick_convert")
+set(MISTY_QUICK_CONVERT_VARIANT_OUTPUT_DIR "${MISTY_QUICK_CONVERT_OUTPUT_DIR}/${MISTY_PLUGIN_VARIANT_DIR}")
+set(MISTY_QUICK_CONVERT_LIBRARY_NAME "quick_convert${CMAKE_SHARED_LIBRARY_SUFFIX}")
+set(MISTY_QUICK_CONVERT_VARIANT_LIBRARY "${MISTY_PLUGIN_VARIANT_DIR}/${MISTY_QUICK_CONVERT_LIBRARY_NAME}")
+set(MISTY_QUICK_CONVERT_MANIFEST_IN "${CMAKE_CURRENT_SOURCE_DIR}/plugins/quick_convert/manifest.json")
+set(MISTY_QUICK_CONVERT_MANIFEST_OUT "${CMAKE_CURRENT_BINARY_DIR}/quick_convert-manifest.json")
+
+add_library(quick_convert MODULE
+    "${CMAKE_CURRENT_SOURCE_DIR}/plugins/quick_convert/plugin.cpp"
+)
+set_target_properties(quick_convert PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME "quick_convert"
+    SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}"
+    LIBRARY_OUTPUT_DIRECTORY "${MISTY_QUICK_CONVERT_VARIANT_OUTPUT_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${MISTY_QUICK_CONVERT_VARIANT_OUTPUT_DIR}"
+)
+target_include_directories(quick_convert PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_compile_definitions(quick_convert PRIVATE MISTY_PLUGIN_BUILD=1)
+
+configure_file("${MISTY_QUICK_CONVERT_MANIFEST_IN}" "${MISTY_QUICK_CONVERT_MANIFEST_OUT}" @ONLY)
+add_custom_target(quick_convert_manifest ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_QUICK_CONVERT_OUTPUT_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${MISTY_QUICK_CONVERT_MANIFEST_OUT}"
+        "${MISTY_QUICK_CONVERT_OUTPUT_DIR}/manifest.json"
+    DEPENDS quick_convert
+)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/quick_convert/plugin.json")
+    add_custom_target(quick_convert_details ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_QUICK_CONVERT_OUTPUT_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy
+            "${CMAKE_CURRENT_SOURCE_DIR}/plugins/quick_convert/plugin.json"
+            "${MISTY_QUICK_CONVERT_OUTPUT_DIR}/plugin.json"
+        DEPENDS quick_convert
+    )
+endif()
+
+set(MISTY_YTDLP_OUTPUT_DIR "${MISTY_PRIVATE_PLUGIN_DIR}/ytdlp")
+set(MISTY_YTDLP_VARIANT_OUTPUT_DIR "${MISTY_YTDLP_OUTPUT_DIR}/${MISTY_PLUGIN_VARIANT_DIR}")
+set(MISTY_YTDLP_LIBRARY_NAME "ytdlp${CMAKE_SHARED_LIBRARY_SUFFIX}")
+set(MISTY_YTDLP_VARIANT_LIBRARY "${MISTY_PLUGIN_VARIANT_DIR}/${MISTY_YTDLP_LIBRARY_NAME}")
+set(MISTY_YTDLP_MANIFEST_IN "${CMAKE_CURRENT_SOURCE_DIR}/plugins/ytdlp/manifest.json")
+set(MISTY_YTDLP_MANIFEST_OUT "${CMAKE_CURRENT_BINARY_DIR}/ytdlp-manifest.json")
+
+add_library(ytdlp MODULE
+    "${CMAKE_CURRENT_SOURCE_DIR}/plugins/ytdlp/plugin.cpp"
+)
+set_target_properties(ytdlp PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME "ytdlp"
+    SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}"
+    LIBRARY_OUTPUT_DIRECTORY "${MISTY_YTDLP_VARIANT_OUTPUT_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${MISTY_YTDLP_VARIANT_OUTPUT_DIR}"
+)
+target_include_directories(ytdlp PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_compile_definitions(ytdlp PRIVATE MISTY_PLUGIN_BUILD=1)
+
+configure_file("${MISTY_YTDLP_MANIFEST_IN}" "${MISTY_YTDLP_MANIFEST_OUT}" @ONLY)
+add_custom_target(ytdlp_manifest ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_YTDLP_OUTPUT_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${MISTY_YTDLP_MANIFEST_OUT}"
+        "${MISTY_YTDLP_OUTPUT_DIR}/manifest.json"
+    DEPENDS ytdlp
+)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/ytdlp/plugin.json")
+    add_custom_target(ytdlp_details ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_YTDLP_OUTPUT_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy
+            "${CMAKE_CURRENT_SOURCE_DIR}/plugins/ytdlp/plugin.json"
+            "${MISTY_YTDLP_OUTPUT_DIR}/plugin.json"
+        DEPENDS ytdlp
+    )
+endif()
+
+set(MISTY_THEMES_OUTPUT_DIR "${MISTY_PRIVATE_PLUGIN_DIR}/themes")
+set(MISTY_THEMES_VARIANT_OUTPUT_DIR "${MISTY_THEMES_OUTPUT_DIR}/${MISTY_PLUGIN_VARIANT_DIR}")
+set(MISTY_THEMES_LIBRARY_NAME "themes${CMAKE_SHARED_LIBRARY_SUFFIX}")
+set(MISTY_THEMES_VARIANT_LIBRARY "${MISTY_PLUGIN_VARIANT_DIR}/${MISTY_THEMES_LIBRARY_NAME}")
+set(MISTY_THEMES_MANIFEST_IN "${CMAKE_CURRENT_SOURCE_DIR}/plugins/themes/manifest.json")
+set(MISTY_THEMES_MANIFEST_OUT "${CMAKE_CURRENT_BINARY_DIR}/themes-manifest.json")
+
+add_library(themes MODULE
+    "${CMAKE_CURRENT_SOURCE_DIR}/plugins/themes/plugin.cpp"
+)
+set_target_properties(themes PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME "themes"
+    SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}"
+    LIBRARY_OUTPUT_DIRECTORY "${MISTY_THEMES_VARIANT_OUTPUT_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${MISTY_THEMES_VARIANT_OUTPUT_DIR}"
+)
+target_include_directories(themes PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_compile_definitions(themes PRIVATE MISTY_PLUGIN_BUILD=1)
+
+configure_file("${MISTY_THEMES_MANIFEST_IN}" "${MISTY_THEMES_MANIFEST_OUT}" @ONLY)
+add_custom_target(themes_manifest ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_THEMES_OUTPUT_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${MISTY_THEMES_MANIFEST_OUT}"
+        "${MISTY_THEMES_OUTPUT_DIR}/manifest.json"
+    DEPENDS themes
+)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/themes/plugin.json")
+    add_custom_target(themes_details ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_THEMES_OUTPUT_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy
+            "${CMAKE_CURRENT_SOURCE_DIR}/plugins/themes/plugin.json"
+            "${MISTY_THEMES_OUTPUT_DIR}/plugin.json"
+        DEPENDS themes
+    )
+endif()
+
+set(MISTY_VAULT_OUTPUT_DIR "${MISTY_PRIVATE_PLUGIN_DIR}/vault")
+set(MISTY_VAULT_VARIANT_OUTPUT_DIR "${MISTY_VAULT_OUTPUT_DIR}/${MISTY_PLUGIN_VARIANT_DIR}")
+set(MISTY_VAULT_LIBRARY_NAME "vault${CMAKE_SHARED_LIBRARY_SUFFIX}")
+set(MISTY_VAULT_VARIANT_LIBRARY "${MISTY_PLUGIN_VARIANT_DIR}/${MISTY_VAULT_LIBRARY_NAME}")
+set(MISTY_VAULT_MANIFEST_IN "${CMAKE_CURRENT_SOURCE_DIR}/plugins/vault/manifest.json")
+set(MISTY_VAULT_MANIFEST_OUT "${CMAKE_CURRENT_BINARY_DIR}/vault-manifest.json")
+
+add_library(vault MODULE
+    "${CMAKE_CURRENT_SOURCE_DIR}/plugins/vault/plugin.cpp"
+)
+set_target_properties(vault PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME "vault"
+    SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}"
+    LIBRARY_OUTPUT_DIRECTORY "${MISTY_VAULT_VARIANT_OUTPUT_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${MISTY_VAULT_VARIANT_OUTPUT_DIR}"
+)
+target_include_directories(vault PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_compile_definitions(vault PRIVATE MISTY_PLUGIN_BUILD=1)
+
+configure_file("${MISTY_VAULT_MANIFEST_IN}" "${MISTY_VAULT_MANIFEST_OUT}" @ONLY)
+add_custom_target(vault_manifest ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_VAULT_OUTPUT_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${MISTY_VAULT_MANIFEST_OUT}"
+        "${MISTY_VAULT_OUTPUT_DIR}/manifest.json"
+    DEPENDS vault
+)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/vault/plugin.json")
+    add_custom_target(vault_details ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${MISTY_VAULT_OUTPUT_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy
+            "${CMAKE_CURRENT_SOURCE_DIR}/plugins/vault/plugin.json"
+            "${MISTY_VAULT_OUTPUT_DIR}/plugin.json"
+        DEPENDS vault
+    )
 endif()

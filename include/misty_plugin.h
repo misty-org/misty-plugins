@@ -13,6 +13,22 @@ enum class NotificationLevel {
     Error   = MISTY_NOTIFICATION_ERROR,
 };
 
+enum class WindowType {
+    Panel = MISTY_WINDOW_TYPE_PANEL,
+    External = MISTY_WINDOW_TYPE_EXTERNAL,
+};
+
+enum class ViewOpenMode {
+    Inline = MISTY_VIEW_OPEN_MODE_INLINE,
+    Tab = MISTY_VIEW_OPEN_MODE_TAB,
+    Split = MISTY_VIEW_OPEN_MODE_SPLIT,
+};
+
+struct ViewCapabilities {
+    bool tabs = false;
+    bool split = false;
+};
+
 // ---------------------------------------------------------------------------
 // Inline wrapper around MistyHostApi. Compiled fresh inside the plugin, so
 // nothing about this class crosses the .dylib/.dll boundary.
@@ -39,6 +55,28 @@ public:
     }
     bool copy_selected_file_path(char* buffer, std::size_t size) {
         return api_->copy_selected_file_path(h_, buffer, size) != 0;
+    }
+    bool get_view_capabilities(const char* view_id, ViewCapabilities* capabilities) {
+        if (!capabilities) {
+            return false;
+        }
+        MistyViewCapabilities raw{};
+        const bool ok = api_->get_view_capabilities(h_, view_id, &raw) != 0;
+        capabilities->tabs = raw.tabs != 0;
+        capabilities->split = raw.split != 0;
+        return ok;
+    }
+    bool open_panel_in_view(const char* panel_id, const char* view_id, ViewOpenMode mode) {
+        return api_->open_panel_in_view(h_, panel_id, view_id, static_cast<int>(mode)) != 0;
+    }
+    bool get_theme_color(const char* token_name, float* out_rgba4) {
+        return api_->get_theme_color(h_, token_name, out_rgba4) != 0;
+    }
+    bool set_theme_color(const char* token_name, const float* rgba4) {
+        return api_->set_theme_color(h_, token_name, rgba4) != 0;
+    }
+    bool apply_theme_preset(const char* preset_name) {
+        return api_->apply_theme_preset(h_, preset_name) != 0;
     }
 
     void notify(NotificationLevel level, const char* title, const char* message) {
@@ -89,6 +127,9 @@ public:
     void text_wrapped(const char* t) { api_->text_wrapped(u_, t); }
     bool button(const char* label, float width = 0, float height = 0) {
         return api_->button(u_, label, width, height) != 0;
+    }
+    bool input_text(const char* label, char* buffer, std::size_t size) {
+        return api_->input_text(u_, label, buffer, size) != 0;
     }
     void same_line() { api_->same_line(u_); }
     void separator() { api_->separator(u_); }

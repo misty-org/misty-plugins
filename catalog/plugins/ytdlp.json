@@ -1,0 +1,61 @@
+{
+  "published": true,
+  "version": "0.1.0",
+  "overview": "yt-dlp brings YouTube downloading into Misty without leaving the app.",
+  "status": "available",
+  "capabilities": [
+    "Download single videos or playlists",
+    "Convert downloads into MP3, M4A, MP4, or WEBM",
+    "Save media into sensible local destinations"
+  ],
+  "where_it_appears": [
+    "Plugins panel",
+    "Global plugin launcher",
+    "Files tabs when launched from Files"
+  ],
+  "permissions": [
+    "Network access through system yt-dlp",
+    "Write access to local download folders",
+    "Shell access to invoke yt-dlp and FFmpeg"
+  ],
+  "getting_started": [
+    "Install yt-dlp and FFmpeg on the host machine.",
+    "Install the plugin from Hub.",
+    "Open it in Misty and paste a YouTube URL."
+  ],
+  "changelog": [
+    "v0.1.0 - Added a native Misty yt-dlp panel with audio and video presets."
+  ],
+  "links": [
+    {
+      "label": "yt-dlp project",
+      "url": "https://github.com/yt-dlp/yt-dlp"
+    },
+    {
+      "label": "FFmpeg",
+      "url": "https://ffmpeg.org/"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Install",
+      "kind": "primary"
+    }
+  ],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "all"
+    ],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "private",
+    "artifact_base_name": "ytdlp",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

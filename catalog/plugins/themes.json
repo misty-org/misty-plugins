@@ -1,0 +1,57 @@
+{
+  "published": true,
+  "version": "0.1.0",
+  "overview": "Themes is Misty's built-in theme builder for presets and token editing.",
+  "status": "available",
+  "capabilities": [
+    "Apply curated presets instantly",
+    "Edit named theme tokens",
+    "Persist theme changes across restarts"
+  ],
+  "where_it_appears": [
+    "Settings view",
+    "Plugins view",
+    "Global plugin launcher"
+  ],
+  "permissions": [
+    "Write access to Misty appearance settings",
+    "No network access required"
+  ],
+  "getting_started": [
+    "Install Themes.",
+    "Open Themes from Settings or the plugin launcher.",
+    "Apply a preset or adjust token colors."
+  ],
+  "changelog": [
+    "v0.1.0 - Added the first theme builder with curated presets."
+  ],
+  "links": [
+    {
+      "label": "Documentation",
+      "url": "https://mistysys.com/docs"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Install",
+      "kind": "primary"
+    }
+  ],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Settings",
+      "Plugins"
+    ],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "private",
+    "artifact_base_name": "themes",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

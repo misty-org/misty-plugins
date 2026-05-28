@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "ytdlp",
+  "name": "yt-dlp",
+  "version": "@PROJECT_VERSION@",
+  "description": "Download YouTube media with yt-dlp and convert it to common audio or video formats.",
+  "author": "Misty",
+  "enabled": true,
+  "platforms": ["@MISTY_HOST_OS@"],
+  "plugin": {
+    "abi_version": 4,
+    "variants": [
+      {
+        "os": "@MISTY_HOST_OS@",
+        "arch": "@MISTY_HOST_ARCH@",
+        "runtime": "",
+        "library": "@MISTY_YTDLP_VARIANT_LIBRARY@"
+      }
+    ]
+  }
+}

@@ -17,6 +17,11 @@ namespace {
 
 constexpr const char* kPanelId = "preview-manager.panel";
 constexpr std::size_t kMaxSelectedPath = 4096;
+#if defined(__APPLE__)
+constexpr const char* kPreviewShortcutLabel = "Cmd+]";
+#else
+constexpr const char* kPreviewShortcutLabel = "Ctrl+]";
+#endif
 
 // ---------------------------------------------------------------------------
 // Format detection
@@ -264,7 +269,12 @@ bool load_file(misty::Host& host, const char* path) {
 
 void open_preview(const MistyInvokeContext* ctx, void*) {
     misty::Host host(ctx);
-    if (!host.invoke_command("explorer.preview.toggle")) {
+    char current_view[64] = {};
+    if (!host.copy_current_view_id(current_view, sizeof(current_view))) {
+        host.notify_error("Preview", "Could not determine the current view.");
+        return;
+    }
+    if (!host.open_panel_in_view(kPanelId, current_view, misty::ViewOpenMode::Inline)) {
         host.notify_error("Preview", "Preview is only available in the Files view.");
         return;
     }
@@ -306,8 +316,10 @@ void render_preview(const MistyRenderContext* ctx, void*) {
     if (!g_state.texture) {
         ui.text("No preview loaded.");
         ui.spacing();
-        ui.text_wrapped(
-            "Select a file in the file explorer and press Ctrl+] to preview.");
+        const std::string help_text =
+            std::string("Select a file in the file explorer and press ") +
+            kPreviewShortcutLabel + " to preview.";
+        ui.text_wrapped(help_text.c_str());
         ui.spacing();
         ui.text("Supported formats:");
         ui.text("  Images: PNG, JPG, BMP, GIF, PSD, TGA, HDR");

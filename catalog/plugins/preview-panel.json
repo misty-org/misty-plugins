@@ -1,0 +1,40 @@
+{
+  "published": false,
+  "plugin_dir": "preview_panel",
+  "version": "0.1.0",
+  "overview": "Development preview scenes for Misty panel and modal work.",
+  "status": "internal",
+  "capabilities": [
+    "Render host-native preview scenes",
+    "Exercise modal and panel layouts in the sandbox"
+  ],
+  "where_it_appears": [
+    "Plugin sandbox"
+  ],
+  "permissions": [
+    "Local development only"
+  ],
+  "getting_started": [
+    "Build the preview plugin.",
+    "Launch it in the Misty plugin sandbox."
+  ],
+  "changelog": [],
+  "links": [],
+  "actions": [],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Development"
+    ],
+    "show_in_launcher": false,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "private",
+    "artifact_base_name": "preview-panel",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

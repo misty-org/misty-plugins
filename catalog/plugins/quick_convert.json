@@ -1,0 +1,58 @@
+{
+  "published": true,
+  "featured_rank": 2,
+  "version": "0.1.0",
+  "overview": "Quick Convert helps users convert images, audio, and video into common formats without leaving Misty.",
+  "status": "available",
+  "capabilities": [
+    "Convert files between common image, audio, and video formats",
+    "Batch process selected assets in one pass",
+    "Choose output format, quality, and destination before exporting"
+  ],
+  "where_it_appears": [
+    "Files panel",
+    "Selected file actions",
+    "Batch actions"
+  ],
+  "permissions": [
+    "Read access to selected files",
+    "Write access to export destinations",
+    "Optional shell access for converter backends"
+  ],
+  "getting_started": [
+    "Install Quick Convert.",
+    "Select one or more media files in Files.",
+    "Choose an output format and destination, then start the conversion."
+  ],
+  "changelog": [
+    "v0.1.0 - Initial plugin template for media conversion workflows."
+  ],
+  "links": [
+    {
+      "label": "Documentation",
+      "url": "https://mistysys.com/docs"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Install",
+      "kind": "primary"
+    }
+  ],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Files"
+    ],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "split"
+  },
+  "install": {
+    "root": "private",
+    "artifact_base_name": "quick-convert",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

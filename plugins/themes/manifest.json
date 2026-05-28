@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "themes",
+  "name": "Themes",
+  "version": "@PROJECT_VERSION@",
+  "description": "Customize Misty's theme tokens and apply presets like Gruvbox.",
+  "author": "Misty",
+  "enabled": true,
+  "platforms": ["@MISTY_HOST_OS@"],
+  "plugin": {
+    "abi_version": 4,
+    "variants": [
+      {
+        "os": "@MISTY_HOST_OS@",
+        "arch": "@MISTY_HOST_ARCH@",
+        "runtime": "",
+        "library": "@MISTY_THEMES_VARIANT_LIBRARY@"
+      }
+    ]
+  }
+}

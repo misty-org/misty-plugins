@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "quick_convert",
+  "name": "Quick Convert",
+  "version": "0.1.0",
+  "author": "Misty",
+  "status": "installed",
+  "overview": "Quick Convert helps users convert images, audio, and video into common formats without leaving Misty. It uses the system FFmpeg installation so the same dependency can be shared across Misty and the terminal.",
+  "capabilities": [
+    "Convert the currently selected file into common image, audio, and video formats",
+    "Write converted copies beside the source file with predictable names",
+    "Use the system FFmpeg dependency instead of bundling a second binary"
+  ],
+  "where_it_appears": [
+    "Files panel",
+    "Quick Convert floating panel"
+  ],
+  "permissions": [
+    "Read access to selected files",
+    "Write access beside the selected file",
+    "Shell access to invoke system ffmpeg"
+  ],
+  "getting_started": [
+    "Install FFmpeg with your system package manager if it is not already available.",
+    "Select an image, audio, or video file in Files.",
+    "Use the Quick Convert panel to choose an output format."
+  ],
+  "changelog": [
+    "v0.1.0 - Added a selected-file conversion panel backed by system FFmpeg."
+  ],
+  "links": [
+    {
+      "label": "Documentation",
+      "url": "https://misty.local/plugins/quick_convert/docs"
+    },
+    {
+      "label": "Source",
+      "url": "https://misty.local/plugins/quick_convert/source"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Open",
+      "kind": "primary"
+    }
+  ],
+  "launcher": {
+    "views": ["Files"],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "split"
+  }
+}

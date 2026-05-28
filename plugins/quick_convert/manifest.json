@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "quick_convert",
+  "name": "Quick Convert",
+  "version": "@PROJECT_VERSION@",
+  "description": "Convert selected image, audio, and video files with system FFmpeg.",
+  "author": "Misty",
+  "enabled": true,
+  "platforms": ["@MISTY_HOST_OS@"],
+  "plugin": {
+    "abi_version": 4,
+    "variants": [
+      {
+        "os": "@MISTY_HOST_OS@",
+        "arch": "@MISTY_HOST_ARCH@",
+        "runtime": "",
+        "library": "@MISTY_QUICK_CONVERT_VARIANT_LIBRARY@"
+      }
+    ]
+  }
+}

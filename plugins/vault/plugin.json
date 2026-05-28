@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "vault",
+  "name": "Vault",
+  "version": "0.1.0",
+  "author": "Misty",
+  "status": "installed",
+  "overview": "Vault provides encrypted, deduplicated backups powered by restic. It is packaged as a plugin so backup workflows can evolve independently from Misty core.",
+  "capabilities": [
+    "Host Vault backup controls in Dock",
+    "Keep restic-specific setup and restore UX outside Misty core",
+    "Prepare a dedicated surface for future backup scheduling and repository management"
+  ],
+  "where_it_appears": [
+    "Dock",
+    "Plugin launcher"
+  ],
+  "permissions": [
+    "Future restic repository access",
+    "Future filesystem read access for selected backup roots",
+    "Future shell access to run restic"
+  ],
+  "getting_started": [
+    "Open Dock.",
+    "Use the plugin launcher to open Vault.",
+    "Configure restic repositories once the Vault plugin grows beyond its placeholder panel."
+  ],
+  "changelog": [
+    "v0.1.0 - Moved Vault out of core and into a Dock-targeted plugin placeholder."
+  ],
+  "actions": [
+    {
+      "label": "Open",
+      "kind": "primary"
+    }
+  ],
+  "launcher": {
+    "views": ["Dock"],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  }
+}

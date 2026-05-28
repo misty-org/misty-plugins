@@ -1,0 +1,39 @@
+{
+  "published": false,
+  "version": "0.1.0",
+  "overview": "Preview images, screenshots, and other visual assets directly inside Misty.",
+  "status": "internal",
+  "capabilities": [
+    "Preview common visual assets",
+    "Support internal preview workflows"
+  ],
+  "where_it_appears": [
+    "Preview workflow"
+  ],
+  "permissions": [
+    "Read access to visual assets"
+  ],
+  "getting_started": [
+    "Build the preview manager plugin.",
+    "Open supported assets in Misty."
+  ],
+  "changelog": [],
+  "links": [],
+  "actions": [],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Files"
+    ],
+    "show_in_launcher": false,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "public",
+    "artifact_base_name": "preview-manager",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

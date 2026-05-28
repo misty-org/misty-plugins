@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "themes",
+  "name": "Themes",
+  "version": "0.1.0",
+  "author": "Misty",
+  "status": "installed",
+  "overview": "Themes is Misty's built-in theme builder. It lets users apply curated presets like Gruvbox Dark, Tokyo Night, and Catppuccin Mocha, then fine-tune the app's core color tokens without editing config files by hand.",
+  "capabilities": [
+    "Apply Misty Dark, Gruvbox Dark, Tokyo Night, or Catppuccin Mocha presets instantly",
+    "Edit named theme tokens such as accent, border, text, and background colors",
+    "Persist theme changes across app restarts"
+  ],
+  "where_it_appears": [
+    "Settings view",
+    "Plugins view",
+    "Global plugin launcher"
+  ],
+  "permissions": [
+    "Write access to Misty appearance settings",
+    "No network access required"
+  ],
+  "getting_started": [
+    "Open Themes from Settings or the plugin launcher.",
+    "Apply Gruvbox Dark, Tokyo Night, or Catppuccin Mocha to preview a preset instantly.",
+    "Adjust token hex values and press Apply Edits to save your custom palette."
+  ],
+  "changelog": [
+    "v0.1.0 - Added the first theme builder with Gruvbox Dark, Tokyo Night, Catppuccin Mocha, and Misty Dark presets."
+  ],
+  "links": [
+    {
+      "label": "Gruvbox",
+      "url": "https://github.com/morhetz/gruvbox"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Open",
+      "kind": "primary"
+    }
+  ],
+  "launcher": {
+    "views": ["settings", "plugins"],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "vault",
+  "name": "Vault",
+  "version": "@PROJECT_VERSION@",
+  "description": "Restic-powered backups for Misty.",
+  "author": "Misty",
+  "enabled": true,
+  "platforms": ["@MISTY_HOST_OS@"],
+  "plugin": {
+    "abi_version": 4,
+    "variants": [
+      {
+        "os": "@MISTY_HOST_OS@",
+        "arch": "@MISTY_HOST_ARCH@",
+        "runtime": "",
+        "library": "@MISTY_VAULT_VARIANT_LIBRARY@"
+      }
+    ]
+  }
+}

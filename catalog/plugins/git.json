@@ -1,0 +1,70 @@
+{
+  "published": true,
+  "featured_rank": 1,
+  "manifest": {
+    "id": "git",
+    "name": "Git",
+    "version": "1.2.0",
+    "description": "Git integration for Misty workspaces.",
+    "author": "mistysys"
+  },
+  "overview": "Seamlessly integrate Git version control into Misty so users can inspect repository state, review changes, and work with commits without leaving the workspace.",
+  "status": "available",
+  "capabilities": [
+    "Direct commit and push functionality",
+    "Branch management and merging",
+    "Visual file diff viewer",
+    "Repository status indicators"
+  ],
+  "where_it_appears": [
+    "Files panel",
+    "Repository actions",
+    "Source control workflows"
+  ],
+  "permissions": [
+    "Read access to workspace repositories",
+    "Write access to tracked files and git metadata",
+    "Shell access for git operations"
+  ],
+  "getting_started": [
+    "Install Git Integration.",
+    "Open a git repository in Misty.",
+    "Use repository actions to inspect changes, stage files, and commit work."
+  ],
+  "changelog": [
+    "v1.2.0 - Added SSH key support and improved diff performance.",
+    "v1.1.0 - Initial release."
+  ],
+  "links": [
+    {
+      "label": "Documentation",
+      "url": "https://mistysys.com/docs"
+    },
+    {
+      "label": "Source",
+      "url": "https://github.com/misty-org/misty"
+    }
+  ],
+  "actions": [
+    {
+      "label": "Install",
+      "kind": "primary"
+    }
+  ],
+  "verified": true,
+  "launcher": {
+    "views": [
+      "Files"
+    ],
+    "show_in_launcher": true,
+    "requires_selected_file": false,
+    "open_mode": "tab"
+  },
+  "install": {
+    "root": "public",
+    "artifact_base_name": "git",
+    "platforms": [
+      "macos-aarch64"
+    ]
+  }
+}

@@ -25,6 +25,22 @@ typedef enum MistyNotificationLevel {
     MISTY_NOTIFICATION_ERROR = 2
 } MistyNotificationLevel;
 
+typedef enum MistyWindowType {
+    MISTY_WINDOW_TYPE_PANEL = 0,
+    MISTY_WINDOW_TYPE_EXTERNAL = 1
+} MistyWindowType;
+
+typedef enum MistyViewOpenMode {
+    MISTY_VIEW_OPEN_MODE_INLINE = 0,
+    MISTY_VIEW_OPEN_MODE_TAB = 1,
+    MISTY_VIEW_OPEN_MODE_SPLIT = 2
+} MistyViewOpenMode;
+
+typedef struct MistyViewCapabilities {
+    int tabs;
+    int split;
+} MistyViewCapabilities;
+
 typedef struct MistyHostApi {
     uint32_t version;
     int  (*open_panel)(void* host, const char* id);
@@ -37,6 +53,11 @@ typedef struct MistyHostApi {
     void (*destroy_texture)(void* host, uint32_t texture_id);
     int  (*copy_selected_file_path)(void* host, char* buffer, size_t size);
     void (*set_preview_scene)(void* host, const char* scene_id);
+    int  (*get_view_capabilities)(void* host, const char* view_id, MistyViewCapabilities* out_caps);
+    int  (*open_panel_in_view)(void* host, const char* panel_id, const char* view_id, int open_mode);
+    int  (*get_theme_color)(void* host, const char* token_name, float* out_rgba4);
+    int  (*set_theme_color)(void* host, const char* token_name, const float* rgba4);
+    int  (*apply_theme_preset)(void* host, const char* preset_name);
 } MistyHostApi;
 
 typedef struct MistyUiApi {
@@ -51,6 +72,7 @@ typedef struct MistyUiApi {
     void (*get_content_region_avail)(void* ui, float* width, float* height);
     int  (*begin_child)(void* ui, const char* id, float width, float height, int border);
     void (*end_child)(void* ui);
+    int  (*input_text)(void* ui, const char* label, char* buffer, size_t size);
 } MistyUiApi;
 
 typedef struct MistyInvokeContext {
@@ -84,6 +106,9 @@ typedef struct MistyPanelReg {
     const char* id;
     const char* title;
     int default_open;
+    int window_type;
+    float default_width;
+    float default_height;
     MistyPanelRenderFn render;
     void* user_data;
 } MistyPanelReg;

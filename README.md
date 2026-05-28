@@ -35,6 +35,17 @@ The Misty host app consumes this workspace by pointing `MISTY_EXTERNAL_PLUGIN_DI
 | Manifest `schema_version` | 2 |
 | Plugin interface version | 1.0 |
 
+## Surface Types
+
+Plugins currently register panels through `MistyPanelReg`. The SDK now also carries
+window intent metadata so a panel can request either:
+
+- `MISTY_WINDOW_TYPE_PANEL` for the existing in-app floating panel behavior
+- `MISTY_WINDOW_TYPE_EXTERNAL` for a host-managed detached OS window once host support lands
+
+Existing plugins remain valid because the default zero-initialized value is still
+`MISTY_WINDOW_TYPE_PANEL`.
+
 ## Native Preview Workflow
 
 Typical local loop from the Misty host repo:
