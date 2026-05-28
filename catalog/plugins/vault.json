@@ -52,5 +52,6 @@
     "platforms": [
       "macos-aarch64"
     ]
-  }
+  },
+    "logo_path": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/plugins/vault/assets/logo.svg"
 }
