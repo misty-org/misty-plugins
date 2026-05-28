@@ -2,26 +2,26 @@
   {
     "id": "git",
     "name": "Git",
-    "url": "https://github.com/misty-org/misty-plugins"
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/git.json"
   },
   {
     "id": "quick_convert",
     "name": "Quick Convert",
-    "url": "https://github.com/misty-org/misty-plugins"
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/quick_convert.json"
   },
   {
     "id": "themes",
     "name": "Themes",
-    "url": "https://github.com/misty-org/misty-plugins"
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/themes.json"
   },
   {
     "id": "vault",
     "name": "Vault",
-    "url": "https://github.com/misty-org/misty-plugins"
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/vault.json"
   },
   {
     "id": "ytdlp",
     "name": "Ytdlp",
-    "url": "https://github.com/misty-org/misty-plugins"
+    "url": "https://raw.githubusercontent.com/misty-org/misty-plugins/main/catalog/plugins/ytdlp.json"
   }
 ]
